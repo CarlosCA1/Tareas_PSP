@@ -21,7 +21,6 @@ public class Tarea_16 extends Thread {
             }
             System.out.println(contador);
         }
-        System.out.println("Contador final: " + contador);
     }
 
     public static void main(String[] args) {
@@ -35,5 +34,17 @@ public class Tarea_16 extends Thread {
         hilo4.start();
         Tarea_16 hilo5 = new Tarea_16("[Hilo-5]");
         hilo5.start();
+
+        try {
+            hilo1.join();
+            hilo2.join();
+            hilo3.join();
+            hilo4.join();
+            hilo5.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Contador final: " + contador);
     }
 }
