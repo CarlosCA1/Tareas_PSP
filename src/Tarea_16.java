@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class Tarea_16 extends Thread {
     private static int contador = 0;
+    private final Object lockA = new Object();
 
     public Tarea_16(String nombre) {
         super(nombre);
@@ -10,7 +11,7 @@ public class Tarea_16 extends Thread {
     public void run() {
 
         for (int i = 0; i < 50; i++) {
-            synchronized (Tarea_16.class) {
+            synchronized (lockA) {
                 contador++;
             }
             try {
